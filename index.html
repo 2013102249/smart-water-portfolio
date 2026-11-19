@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 产品经理作品集</title>
+<style>
+  :root{
+    --purple:#7C3AED;--purple-d:#5B21B6;--purple-soft:#EDE4FF;
+    --blue:#2563EB;--blue-d:#1D4ED8;--blue-soft:#E0EBFF;
+    --teal:#0D9488;--teal-soft:#CCFBF1;
+    --amber:#D97706;--amber-soft:#FEF3C7;
+    --rose:#E11D48;--rose-soft:#FFE4E6;
+    --green:#059669;--green-soft:#D1FAE5;
+    --gray:#6B7280;--gray-soft:#F3F4F6;
+    --ink:#1F2430;--muted:#667085;--line:#E5E7EB;--bg:#F7F7FB;--card:#FFFFFF;
+    --shadow:0 6px 24px rgba(124,58,237,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  /* Hero */
+  .hero{background:linear-gradient(135deg,#7C3AED 0%,#5B21B6 45%,#2563EB 100%);color:#fff;padding:52px 0 46px;position:relative;overflow:hidden}
+  .hero:after{content:"";position:absolute;right:-80px;top:-120px;width:340px;height:340px;border-radius:50%;
+    background:rgba(255,255,255,.08)}
+  .hero .wrap{position:relative;z-index:1}
+  .kicker{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+    font-size:12px;font-weight:700;letter-spacing:1px;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+  .hero h1{font-size:34px;line-height:1.25;margin-bottom:10px;letter-spacing:-.5px}
+  .hero .sub{font-size:16px;opacity:.92;max-width:760px}
+  .demo-btn{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 18px;
+    background:#fff;color:var(--purple-d);font-size:14px;font-weight:800;border-radius:999px;
+    box-shadow:0 4px 14px rgba(0,0,0,.15);transition:transform .15s,box-shadow .15s}
+  .demo-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.22)}
+  .demo-btn .ico{font-size:16px}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .legend span{font-size:11px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+    padding:4px 10px;border-radius:999px}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+  nav .wrap::-webkit-scrollbar{display:none}
+  nav a{white-space:nowrap;font-size:13px;font-weight:600;color:var(--muted);padding:13px 14px;border-bottom:2px solid transparent}
+  nav a:hover{color:var(--purple);border-bottom-color:var(--purple)}
+
+  /* Sections */
+  section{padding:38px 0 6px;scroll-margin-top:56px}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .sec-no{width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:var(--purple-soft);color:var(--purple);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+  .sec-head h2{font-size:21px;letter-spacing:-.3px}
+  .sec-head .en{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);
+    padding:20px 22px;margin-bottom:14px}
+  .h3{font-size:15px;font-weight:800;color:var(--purple-d);margin:4px 0 10px;display:flex;align-items:center;gap:8px}
+  .h3:before{content:"";width:4px;height:15px;border-radius:2px;background:var(--purple)}
+  .p{font-size:14px;color:#374151;margin-bottom:8px;word-break:break-word}
+  .p:last-child{margin-bottom:0}
+
+  /* Evidence chips (auto from [xxx]) */
+  .ev{display:inline-block;font-size:10px;font-weight:700;padding:1px 6px;border-radius:5px;vertical-align:middle;margin:0 1px}
+  .ev-real{background:var(--green-soft);color:#047857}
+  .ev-sim{background:var(--blue-soft);color:var(--blue-d)}
+  .ev-est{background:var(--amber-soft);color:#B45309}
+  .ev-hyp{background:var(--gray-soft);color:#4B5563}
+
+  /* Table */
+  .tbl-wrap{overflow-x:auto;margin:6px 0 4px;border:1px solid var(--line);border-radius:10px}
+  table{border-collapse:collapse;width:100%;font-size:13px;min-width:520px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--purple-soft);color:var(--purple-d);font-weight:700;white-space:nowrap}
+  tr:last-child td{border-bottom:0}
+  tr:nth-child(even) td{background:#FBFAFE}
+
+  /* Cards row */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:6px 0}
+  .mini{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:13px 14px;background:#fff}
+  .mini.purple{border-left-color:var(--purple)} .mini.teal{border-left-color:var(--teal)}
+  .mini.amber{border-left-color:var(--amber)} .mini.rose{border-left-color:var(--rose)}
+  .mini .tag{display:inline-block;font-size:10px;font-weight:700;color:var(--muted);background:var(--gray-soft);
+    padding:2px 7px;border-radius:5px;margin-bottom:6px}
+  .mini .t{font-weight:800;font-size:14px;margin-bottom:4px}
+  .mini .b{font-size:12.5px;color:#4B5563}
+
+  /* KV */
+  .kv{display:grid;grid-template-columns:130px 1fr;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .kv .k,.kv .v{padding:9px 12px;font-size:13px;border-bottom:1px solid var(--line)}
+  .kv .k{background:#FAFAFC;font-weight:700;color:var(--muted)}
+  .kv .v{color:#374151}
+  .kv .k:last-of-type,.kv .v:last-of-type{border-bottom:0}
+
+  /* Callout */
+  .callout{border-radius:10px;padding:12px 14px;font-size:13px;margin:6px 0;border-left:4px solid var(--blue);background:var(--blue-soft);color:var(--blue-d)}
+  .callout.warn{border-left-color:var(--amber);background:var(--amber-soft);color:#92400E}
+
+  /* Score strip */
+  .score-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:8px 0}
+  .score{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:#fff}
+  .score .q{font-size:12px;color:var(--muted);font-weight:700}
+  .score .v{font-size:24px;font-weight:800;color:var(--purple);margin:2px 0}
+  .score .v small{font-size:12px;color:var(--muted);font-weight:600}
+  .score .g{font-size:11.5px;color:#4B5563}
+
+  /* Details / PRD */
+  details{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:#fff}
+  details summary{cursor:pointer;padding:11px 14px;font-weight:700;font-size:14px;color:var(--ink);list-style:none;
+    display:flex;align-items:center;gap:9px}
+  details summary::-webkit-details-marker{display:none}
+  details summary:before{content:"+";color:var(--purple);font-weight:800;font-size:17px;width:16px}
+  details[open] summary:before{content:"−"}
+  details .dbody{padding:0 14px 14px 39px}
+
+  /* ===== Map (scoped, from solution-map-template.html) ===== */
+  .map{font-size:13px}
+  .map .m-legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .map .m-legend span{font-size:11px;color:#374151;background:#fff;border:1px solid var(--line);
+    border-radius:999px;padding:4px 10px;display:inline-flex;align-items:center;gap:6px}
+  .map .m-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .map .m-panel{background:#FAFAFC;border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}
+  .map .m-title{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:12px;letter-spacing:.3px}
+  .map .m-flow{display:flex;align-items:stretch;overflow-x:auto}
+  .map .m-zone{flex:1;min-width:130px;display:flex;flex-direction:column}
+  .map .m-zh{color:#fff;text-align:center;font-size:12.5px;font-weight:700;padding:8px 4px;border-radius:8px 8px 0 0}
+  .map .m-zb{background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 8px 8px;
+    padding:10px 8px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .map .m-node{background:#fff;border:1px solid var(--line);border-left-width:4px;border-radius:7px;
+    padding:8px 9px;font-size:12px;white-space:pre-line}
+  .map .m-chip{display:inline-block;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;margin-bottom:4px}
+  .map .m-arrow{flex:0 0 22px;display:flex;align-items:center;justify-content:center}
+  .map .m-arrow:before{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #9CA3AF}
+  .map .zp{background:var(--purple)} .map .np{border-left-color:var(--purple)} .map .cp{background:var(--purple-soft);color:var(--purple)}
+  .map .zb{background:var(--blue)} .map .nb{border-left-color:var(--blue)} .map .cb{background:var(--blue-soft);color:var(--blue)}
+  .map .zt{background:var(--teal)} .map .nt{border-left-color:var(--teal)} .map .ct{background:var(--teal-soft);color:var(--teal)}
+  .map .za{background:var(--amber)} .map .na{border-left-color:var(--amber)} .map .ca{background:var(--amber-soft);color:var(--amber)}
+  .map .zr{background:var(--rose)}
+  .map .m-fb{background:var(--rose-soft);border:1px dashed var(--rose);border-radius:11px;padding:13px}
+  .map .m-fb-t{font-size:12px;font-weight:700;color:var(--rose);margin-bottom:10px}
+  .map .m-fb-flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+  .map .m-fb-node{background:#fff;border:1px solid var(--rose);color:#9F1239;border-radius:7px;padding:6px 10px;font-size:12px}
+  .map .m-back{margin-top:9px;font-size:11.5px;color:#9F1239;font-weight:700}
+  .map .m-metrics{background:var(--blue-soft);border:1px dashed var(--blue);border-radius:11px;padding:13px}
+  .map .m-grid{display:flex;flex-wrap:wrap;gap:8px}
+  .map .m-item{background:#fff;border:1px solid var(--blue);border-radius:8px;padding:8px 10px;font-size:11.5px;flex:1 1 140px}
+  .map .m-item .m-layer{display:inline-block;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;margin-bottom:4px}
+  .map .le{background:#EDE4FF;color:var(--purple)} .map .lx{background:#CCFBF1;color:var(--teal)} .map .lb{background:#FEF3C7;color:var(--amber)}
+  .map .m-item .m-n{font-weight:700;display:block} .map .m-item .m-p{color:var(--muted)}
+
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:34px 20px 40px}
+  @media(max-width:820px){
+    .hero{padding:38px 0 32px} .hero h1{font-size:26px}
+    section{padding-top:30px} .sec-head h2{font-size:18px}
+    .card{padding:16px} .kv{grid-template-columns:100px 1fr}
+    .map .m-flow{flex-direction:column}
+    .map .m-arrow{height:20px;flex:0 0 20px}
+    .map .m-arrow:before{border-left:6px solid transparent;border-right:6px solid transparent;
+      border-top:9px solid #9CA3AF;border-bottom:0}
+    .map .m-zb{flex-direction:row;flex-wrap:wrap} .map .m-node{flex:1 1 130px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker" id="kicker">AI 产品经理作品集</span>
+    <h1 id="title">项目名</h1>
+    <p class="sub" id="subtitle">一句话说清项目：谁在什么场景下用，解决什么问题，效果如何</p>
+    <a class="demo-btn" href="https://2013102249.github.io/smart-water-platform/" target="_blank" rel="noopener"><span class="ico">▶</span>打开可点击 Demo</a>
+    <div class="legend">
+      <span>证据标注</span>
+      <span>[真实] 有数据/日志</span><span>[仿真] 样例集跑分</span>
+      <span>[估算] 行业基准推算</span><span>[假设] 待确认</span>
+    </div>
+  </div>
+</header>
+
+<nav><div class="wrap" id="nav"></div></nav>
+
+<main class="wrap">
+  <section id="s1"><div class="sec-head"><div class="sec-no">1</div><div><h2>项目概览</h2><div class="en">Overview &amp; Self-check</div></div></div><div id="b1"></div></section>
+  <section id="s2"><div class="sec-head"><div class="sec-no">2</div><div><h2>作品设计文档</h2><div class="en">Design Doc</div></div></div><div id="b2"></div></section>
+  <section id="s3"><div class="sec-head"><div class="sec-no">3</div><div><h2>可审阅 PRD</h2><div class="en">PRD</div></div></div><div id="b3"></div></section>
+  <section id="s4"><div class="sec-head"><div class="sec-no">4</div><div><h2>综合方案图</h2><div class="en">Solution Map</div></div></div><div class="card map" id="map"></div></section>
+  <section id="s5"><div class="sec-head"><div class="sec-no">5</div><div><h2>评测方案</h2><div class="en">Evaluation</div></div></div><div id="b5"></div></section>
+</main>
+
+<footer>AI 产品经理作品集 · 单文件页面，可离线打开 · 证据分级：真实 / 仿真 / 估算 / 假设</footer>
+
+<script>
+/* ============================================================
+   填充说明：只修改 CONFIG 一个对象，无需改动 HTML / CSS / 渲染逻辑。
+   ------------------------------------------------------------
+   顶层字段：
+     kicker, title, subtitle —— 页头文字
+     nav —— 导航项 [{id:"s1",label:"项目概览"}, ...]，与 section id 对应
+     b1 项目概览 / b2 设计文档 / b3 PRD / b5 评测方案 —— 内容块数组 blocks
+     map —— 综合方案图配置（见下方 MAP 说明）
+
+   blocks 支持的 type（按需组合，顺序即渲染顺序）：
+     {type:"h",   text:"小标题"}
+     {type:"p",   text:"段落，可用 \\n 换行；[真实]/[仿真]/[估算]/[假设] 自动变彩色标签"}
+     {type:"table", head:["列1","列2"], rows:[["值1","值2"], ...]}
+     {type:"cards", color:"purple|blue|teal|amber|rose", items:[
+         {tag:"小标签", title:"标题", body:"正文"}]}
+     {type:"kv",  items:[{k:"键", v:"值"}]}
+     {type:"callout", tone:"tip|warn", text:"提示文字"}
+     {type:"score", items:[{q:"Q1 问题定义", score:"2/2", gap:"缺口说明"}]}
+     {type:"details", title:"章节名", open:true|false,
+         blocks:[ ...可嵌套上述任意 block... ]}
+
+   ============================================================ */
+const CONFIG = {
+  kicker: "AI 产品经理作品集 · 项目精修",
+  title: "智慧水利数字孪生平台 · AI 增强方案设计",
+  subtitle: "基于真实可点击 Demo 与 PRD，设计防汛预警的 AI 增强层：工作流做主、RAG 补知识、MCP 连系统，用 60 条仿真评测集验证增强效果（准确率 60% → 93.3%）",
+  nav: [
+    {id:"s1", label:"项目概览"}, {id:"s2", label:"设计文档"}, {id:"s3", label:"PRD"},
+    {id:"s4", label:"方案图"}, {id:"s5", label:"评测方案"}
+  ],
+
+  b1: [
+    {type:"callout", tone:"tip", text:"证据分级说明：本项目基于一份真实 PRD 与可点击 Demo（数字孪生一张图、物联监测、仿真预演、防汛等 21 个页面）。[真实] 指 PRD/Demo 中已存在的内容；[仿真] 指自建样例集上的跑分；[估算] 指行业基准推算；[假设] 指待验证的目标。作品集仅展示设计判断与评测证据，不把仿真包装成线上结果。"},
+    {type:"score", items:[
+      {q:"Q1 问题定义", score:"1/2", gap:"[真实] PRD 有用户角色与防汛场景，但痛点不可观察、无失败场景；本次补齐"},
+      {q:"Q2 指标体系", score:"0/2", gap:"[真实] 只有性能指标（加载≤10s/刷新≤3s），缺效果与业务指标；本次补齐三层指标"},
+      {q:"Q3 评测方案", score:"0/2", gap:"[真实] 原 PRD 无评测集/通过线/回归；本次新建 60 条仿真评测集与三档通过线"},
+      {q:"Q4 bad case", score:"0/2", gap:"[真实] 原 PRD 无 bad case 分类与迭代闭环；本次补分类分级与 2 条完整记录"}
+    ]},
+    {type:"h", text:"现有资产盘点（对账基准）"},
+    {type:"table", head:["项","现状分类","说明与处理"], rows:[
+      ["目标用户与场景","薄弱","[真实] PRD 定义了防汛/水资源/供水/灌区四类业务与角色矩阵，但角色能力、触发条件未展开 → 本次细化主次用户与触发场景"],
+      ["痛点","缺失","[真实] 原 PRD 只有产品定位，无「谁在什么情况下失败」的可观察描述 → 本次按固定结构补齐，标注 [假设]"],
+      ["方案与功能","已有","[真实] 8 大模块、21 个页面、SVG 流域图与图层树、时序曲线、洪水演进动画均已实现，Demo 可点击 → 保留，作为 AI 增强的业务底座"],
+      ["技术选型","薄弱","[真实] 有 IoT/MQTT、GB/T28181、GIS、模型引擎接口需求，但未论证 AI 能力选型 → 本次按工作流/RAG/MCP 决策树补齐"],
+      ["指标体系","薄弱","[真实] 仅非功能性能指标（首屏≤10s、刷新≤3s、并发≥100）→ 本次扩展为效果/体验/业务三层"],
+      ["评测与 bad case","缺失","[真实] 原 PRD 无评测集、无通过线、无 bad case 闭环 → 本次新建独立评测方案章节"]
+    ]},
+    {type:"h", text:"补全路线图（按投入产出比排序）"},
+    {type:"p", text:"1. 补齐 Q1 问题定义与 Q2 三层指标（成本最低、最常被追问）→ 2. 补 Q4 bad case 分级与迭代闭环 → 3. 建 Q3 完整评测方案：60 条仿真集 + 三档通过线 + 回归机制。所有仿真数字均由可复现脚本产出，不虚构规模。"},
+    {type:"callout", tone:"warn", text:"边界声明：原 Demo 是业务功能演示，AI 增强层（数据质量门控、突变检测、RAG 预案检索、工作流编排）为方案设计与仿真验证，未接入生产系统。所有效果数字均为 [仿真]，不可当作线上实测。"}
+  ],
+
+  b2: [
+    {type:"h", text:"1. 背景与痛点"},
+    {type:"p", text:"【防汛值班员】在【汛期夜间暴雨、多站水位同时逼近警戒】的场景下要完成【发现异常 → 判级 → 派发处置】的任务，现在的做法是【值守多台屏幕，人工比对测站水位表与警戒线，再电话通知责任人】，但会出现【传感器漂移引起的假水位被当成真实汛情、缺测站点无人发现、预警分级凭经验不一致】的失败现象，根因是【现有阈值规则只比较单点数值，缺少数据质量门控与历史序列校验，且处置流程靠人工串联，无强制确认节点】。[假设：基于 PRD 预警字段与值守场景推导，待真实值班日志验证]"},
+    {type:"p", text:"可观察证据：PRD 中预警字段含「触发阈值、触发值、处置人、处置状态、闭环时间」，说明判级与处置闭环是核心任务；但字段清单中无数据质量标记字段、无自动派发规则字段 [真实]。归因：单点阈值比较无法区分「水位真的涨了」与「传感器漂移」，这是规则层缺口，不是界面问题 [假设]。"},
+    {type:"h", text:"2. 目标用户与场景"},
+    {type:"table", head:["角色","类型","经验水平","使用频率","决策权","触发场景"], rows:[
+      ["防汛值班员","主用户","水利业务熟练，AI 新手","汛期每日/暴雨时每小时","可采纳或推翻预警分级，决定派单","水位逼近警戒、雨量突增、站点离线时"],
+      ["水利局调度负责人","次用户","资深，掌握调度规则","汛期每日会商","审批红色预警的处置方案与库坝调度","出现橙色/红色预警或需要跨部门协同"],
+      ["运维人员","次用户","设备与通信专业","日常巡检+告警触发","决定设备是否停检修","收到设备离线、数据异常兜底工单"]
+    ]},
+    {type:"p", text:"主路径（与 PRD 核心流程、综合方案图主干一致）：测站数据接入 → 数据质量门控 → 异常？进兜底 / 正常→分级判定 → 高风险？人工复核 → 预警卡片+派发处置 → 闭环归档。用完进入「汛情监视总览」继续盯下一轮。[真实：后半段来自 Demo；前半段 AI 增强层为 [假设] 设计]"},
+    {type:"h", text:"3. 方案与 MVP 边界"},
+    {type:"p", text:"产品形态：嵌入现有智慧水利平台的「AI 预警增强层」，不新建独立系统。[假设]"},
+    {type:"p", text:"核心功能（输入 → 处理 → 输出）：\n1. 数据质量门控：测站时序+设备状态 → 缺测/突变检测 → 数据异常兜底工单或放行\n2. 预警分级：放行后的监测值+站点阈值 → 分级规则+历史序列校验 → 蓝/黄/橙/红预警卡片\n3. 预案辅助：预警类型+位置 → RAG 检索防汛预案条款 → 带出处的处置建议\n4. 处置闭环：预警卡片 → 工作流强制节点（派单/复核/验收）→ 闭环记录\n5. 多源接入：IoT/视频/GIS/模型引擎 → MCP 标准化工具调用 → 统一上下文"},
+    {type:"p", text:"MVP 不做（边界）：\n· 不做自动开闸/调度下发——涉及工程安全，必须人工决策\n· 不接生成式模型做自由问答——防汛场景要求答案可溯源，RAG 检索优先\n· 不覆盖水资源/灌区/供水业务——首版只做防汛预警闭环\n· 不处理非结构化视频内容理解——视频仅作人工查看附件"},
+    {type:"h", text:"4. 技术选型"},
+    {type:"cards", color:"purple", items:[
+      {tag:"主选型", title:"工作流（Workflow）· 负责预警处置闭环", body:"选它的理由：处置步骤固定可枚举（发现→判级→派单→抢险→验收），每步要留痕、高风险要人工确认，工作流可控可审计 [假设]。否决了 Agent 自主规划：调度路径不可预测、红色预警可触发工程动作，Agent 的自主性在此是风险而非能力。边界：当出现预案未覆盖的复合险情时，固定流程会卡住，此时转人工会商，流程只做记录不做决策。"},
+      {tag:"辅助选型", title:"RAG · 负责预案与规程检索", body:"选它的理由：防汛预案是私有、常更新、要求出处的文档，检索后由人判断，符合 RAG 能力匹配 [假设]。否决了微调：预案每年修订，微调无法低成本更新且不能给出处。边界：检索未命中或预案冲突时不得生成答案，降级为「无匹配预案，请人工查库」。"},
+      {tag:"辅助选型", title:"MCP · 负责多源系统连接", body:"选它的理由：[真实] Demo PRD 要求对接 IoT(MQTT/HTTP)、GB/T28181 视频、GIS、模型引擎四类异构系统；MCP 把各系统封装成标准工具，便于复用与权限隔离 [假设]。否决了逐系统硬编码 API：接口协议各异、鉴权分散，新增系统需改主流程代码。边界：仅用于只读查询与数据拉取，不下发控制指令；工具不可用时降级为人工查看。"}
+    ]},
+    {type:"p", text:"选型决策走查：Q1 答案是否依赖私有常更新知识？是（预案文档）→ 用 RAG。Q2 步骤是否固定可枚举？是（处置闭环）→ 主选工作流。Q3 是否需自主调多系统？否（只需按固定流程拉数据）→ 不上 Agent；但系统异构 → 用 MCP 做标准化连接。"},
+    {type:"h", text:"5. 指标体系（效果 / 体验 / 业务）"},
+    {type:"table", head:["指标","层","定义","口径（分子/分母/范围）","目标值","采集方式","坏例判定"], rows:[
+      ["预警分级准确率","效果","分级结果与专家标注一致的样例占比","分子=分级一致条数；分母=评测集 60 条 [仿真]","达标≥85% 优秀≥90% [仿真]","仿真跑分 run_eval.py","红/橙/蓝/黄错一级及以上，或把正常判为预警"],
+      ["数据异常兜底成功率","效果","缺测/漂移样例被正确路由到兜底的占比","分子=兜底正确条数；分母=异常样例 24 条 [仿真]","达标≥80% 优秀≥95% [仿真]","仿真跑分","缺测未兜底、或把正常波动误判为异常"],
+      ["孪生场景首屏加载时长","体验","从打开页面到三维场景可交互","分子=加载耗时；范围=PC Chrome [真实]","≤10s [真实·PRD]","前端性能埋点","超过 10s 或场景不可交互"],
+      ["监测数据刷新周期","体验","监测值从采集到前端更新的间隔","范围=全部在线测站 [真实]","≤3s [真实·PRD]","IoT 接入引擎日志","超过 3s 或数据停滞"],
+      ["预警处置闭环率","业务","按时限完成派单→验收的预警占比","分子=时限内闭环数；分母=预警总数 [假设]","≥95% [假设]","工作流日志","超 24h 未闭环或缺失验收节点"]
+    ]},
+    {type:"h", text:"6. 价值与边界"},
+    {type:"kv", items:[
+      {k:"增量价值", v:"[仿真] 自建 60 条集上，纯阈值规则准确率 60.0%、异常兜底 0%；增加数据质量门控+突变检测后准确率 93.3%、异常兜底 83.3%、误报从 12 降到 0。价值主要在「少误报」与「不让缺测静默」，而非替代人工决策。"},
+      {k:"适用边界", v:"适合：阈值明确、有历史序列、需留痕的防汛预警闭环。不适合：无历史数据的新站点（退化为纯阈值）、需要语义判断的复合险情（转人工会商）、实时开闸控制（超出本方案权限）。"},
+      {k:"风险与责任", v:"红色预警必须人工复核后才能派发工程处置；RAG 答案必须带出处，无出处不得输出；所有自动判级结果保留人工推翻入口与操作日志，符合等保2.0三级审计要求 [真实：PRD 安全需求]。"}
+    ]}
+  ],
+
+  b3: [
+    {type:"p", text:"在原有 PRD（8 大模块、页面原型、字段清单、接口/数据/安全需求）基础上补齐 AI 产品特有章节。五类内容——产品逻辑 / 核心流程 / AI 组件 / 人工确认 / 异常兜底——均在正文落位，并与「综合方案图」图文一致。"},
+    {type:"details", title:"0. 产品逻辑与范围（原 PRD 保留 + 增量说明）", open:true, blocks:[
+      {type:"p", text:"[真实] 原 PRD 产品定位：面向流域/地市水利主管部门、水库、灌区、供水工程管理单位，建设数字孪生智慧水利一体化平台。范围包含数字孪生 GIS 底座、物联感知、水利专业模型仿真、防汛/水资源/供水/灌区业务、工程运维、移动端、报表中心、系统管理；不包含现场传感器硬件、摄像头硬件、服务器采购与土建施工。"},
+      {type:"p", text:"[假设] 本次增量范围：仅在防汛业务子系统上叠加 AI 预警增强层（数据质量门控、分级校验、RAG 预案辅助、工作流闭环），不改动原有 GIS、模型引擎与业务模块。"}
+    ]},
+    {type:"details", title:"1. 模型选型与理由", blocks:[
+      {type:"p", text:"主选工作流负责处置闭环，辅助 RAG 负责预案检索、MCP 负责异构系统连接（选型理由、否决方案、边界见「设计文档 · 技术选型」）。[假设] 不引入通用大模型做自由生成：防汛分级依赖确定阈值与可溯源条款，生成的灵活性在此是风险。若未来需要多源险情摘要，再评估小模型+结构化输出，必须经评测通过后方可上线。"}
+    ]},
+    {type:"details", title:"2. Prompt / 知识库策略", blocks:[
+      {type:"p", text:"[假设] 知识库：防汛预案、调度规程、历史会商纪要；更新责任人为防汛科，每次修订后 24h 内同步索引，保留版本号与生效日期。Prompt 策略：角色=水利防汛助手；约束=仅依据检索到的条款回答、无匹配则明确拒答、不得给出开闸数值建议；输出格式=「建议条款编号 + 原文摘录 + 置信来源」三段式；防注入=用户输入只作为检索词，不拼接进指令模板，过滤「忽略之前指令」类输入。占位符 {预案库版本} / {检索片段} / {站点编码}，不写任何密钥。"}
+    ]},
+    {type:"details", title:"3. 评测指标与失败兜底", blocks:[
+      {type:"p", text:"效果指标：预警分级准确率、数据异常兜底成功率；体验指标：孪生首屏加载时长、监测数据刷新周期；业务指标：预警处置闭环率。口径与目标值见「设计文档 · 指标体系」与「评测方案 · 指标定义表」，三处一致。"},
+      {type:"p", text:"[仿真] bad case 分类与兜底：事实错误（阈值引用错）→ 回退原阈值表并重算；漏召（缺测未兜底）→ 强制数据质量门控；误召（漂移被当汛情）→ 历史序列突变检测；格式违规（RAG 无出处）→ 输出校验拦截；延迟超时（检索慢）→ 超时 2s 降级为纯规则分级。完整迭代见「评测方案 · bad case 迭代闭环」。"}
+    ]},
+    {type:"details", title:"4. 人工确认节点", blocks:[
+      {type:"p", text:"[假设] 三个强制节点：① 红色/橙色预警派发工程处置前，调度负责人复核并签字；② RAG 给出的预案建议仅作参考，值班员决定是否采纳；③ 预警关闭需填写处置描述与验收意见（对应 [真实] PRD 预警字段「处置描述、闭环时间」）。超时处理：复核 30 分钟未响应自动升级至上级并电话提醒；复核不通过回流至「分级判定」节点重算，并记录驳回原因。"}
+    ]},
+    {type:"details", title:"5. 成本与延迟", blocks:[
+      {type:"p", text:"[估算] 单次预警处理：规则+序列校验为本地计算，成本≈0、延迟 <100ms；RAG 检索按每次 1–2 次向量查询估算，增加 300–800ms；整条链路端到端目标 ≤3s（与 [真实] 监测数据刷新 ≤3s 对齐）。成本权衡：分级判定不用大模型（用规则），只有预案检索用检索增强；高频查询结果缓存 5 分钟；无匹配预案时不重试多次，直接降级。"}
+    ]},
+    {type:"details", title:"6. 数据飞轮", blocks:[
+      {type:"p", text:"[假设] 闭环路径：值班员推翻分级 / 标记误报 → 写入 bad case 库 → 每周汇总进评测集 → 回归通过后更新规则与知识库 → 重新发布。冷启动：无真实反馈时用 60 条 [仿真] 集启动（见评测方案），上线后按「每周真实反馈 ≥20 条则替换 10 条仿真样例」逐步过渡。"}
+    ]},
+    {type:"details", title:"7. 边界与责任", blocks:[
+      {type:"p", text:"[假设] AI 不做：自动开闸/调度下发、无出处的自由生成、非防汛业务的自动决策、视频内容理解。责任划分：分级建议由系统给出，采纳与派发由人负责；RAG 答案仅供参考，以正式预案文档为准；所有自动判断保留日志与推翻入口。[真实] 原 PRD 要求等保2.0三级、传输 HTTPS、敏感数据脱敏、关键操作审计，本增强层沿用。"}
+    ]}
+  ],
+
+  map: {
+    title: "智慧水利 AI 增强方案 · 综合方案图",
+    subtitle: "测站数据经质量门控与分级判定，高风险转人工复核，异常走兜底回路，全程埋点采集三层指标",
+    zones: [
+      {name:"用户侧", color:"purple", nodes:[
+        {label:"防汛值班员\n查看汛情总览", chip:"主用户"},
+        {label:"测站数据接入\nIoT/MQTT·视频·GIS", chip:"入口"}
+      ]},
+      {name:"业务流程", color:"blue", nodes:[
+        {label:"数据质量门控\n缺测/突变检测", chip:"规则"},
+        {label:"预警分级判定\n阈值+序列校验", chip:"规则"},
+        {label:"派单→抢险→验收\n强制留痕", chip:"流程"}
+      ]},
+      {name:"AI 组件", color:"teal", nodes:[
+        {label:"工作流（主）\n处置闭环编排", chip:"AI-主"},
+        {label:"RAG\n预案条款检索·带出处", chip:"AI"},
+        {label:"MCP\n异构系统标准连接", chip:"AI"}
+      ]},
+      {name:"人工确认", color:"amber", nodes:[
+        {label:"高风险判定？\n橙/红预警", chip:"判断"},
+        {label:"调度负责人复核\n签字后派发", chip:"人工"},
+        {label:"预警输出与闭环", chip:"输出"}
+      ]}
+    ],
+    fallback: {
+      trigger: "触发：数据缺测 / 传感器突变 / RAG 无出处 / 检索超时",
+      nodes: ["数据异常兜底工单", "降级为纯规则分级", "转人工会商", "无匹配预案提示"],
+      backTo: "预警输出与闭环"
+    },
+    metrics: [
+      {layer:"effect", name:"预警分级准确率", point:"埋点：预警分级判定"},
+      {layer:"effect", name:"数据异常兜底成功率", point:"埋点：数据质量门控"},
+      {layer:"exp", name:"孪生首屏加载时长", point:"埋点：页面加载"},
+      {layer:"biz", name:"预警处置闭环率", point:"埋点：派单→验收"}
+    ],
+    mermaid: [
+      "flowchart TD",
+      "  A[测站数据接入] --> B{数据质量门控}",
+      "  B -->|缺测/突变| X[数据异常兜底工单]",
+      "  B -->|正常| C[预警分级判定]",
+      "  C --> D[工作流编排处置]",
+      "  D --> E[RAG 预案检索]",
+      "  D --> F[MCP 系统连接]",
+      "  E --> G{高风险? 橙/红}",
+      "  G -->|是| H[调度负责人复核]",
+      "  G -->|否| I[预警输出与闭环]",
+      "  H --> I",
+      "  X -.-> I",
+      "  E -.->|无出处/超时| I"
+    ].join("\n")
+  },
+
+  b5: [
+    {type:"callout", text:"评测方案可独立审阅。核心四问：数怎么来的（§1）｜多少算好（§3）｜怎么保证不退化（§4）｜bad case 后做了什么（§5）。所有数字标注来源，仿真跑分由固定种子脚本产出，可复现。"},
+    {type:"h", text:"1. 评测集设计"},
+    {type:"table", head:["项","内容"], rows:[
+      ["样例来源","[真实] 测站阈值取自 Demo 中 8 个站点（5 水位站 + 3 雨量站）；[仿真] 评测样例由脚本按固定随机种子 20260929 构造，非线上日志"],
+      ["规模与构成","[仿真] 共 60 条：正常 24 / 边界 12 / 对抗 12 / 失败 12；固定种子保证可复现"],
+      ["标注方式","[仿真] 专家标注口径 = Demo 阈值分级规则（红/橙/黄/蓝/无）+ 数据异常兜底；由脚本按同一口径自动标注，避免人工分歧"],
+      ["一致性校验","[仿真] 边界维度 12 条逐条复核（100% 复核）；脚本内置两种引擎对同一标注集打分，分歧 case 进入 bad case 库"]
+    ]},
+    {type:"table", head:["维度","条数","样例说明"], rows:[
+      ["正常","24","[仿真] 平稳序列，水位为警戒值的 40%–80%，专家标注「无预警」"],
+      ["边界","12","[仿真] 水位在警戒/保证线 ±0.3m 内，平稳序列，检验分级口径一致性"],
+      ["对抗","12","[仿真] 传感器漂移：8 条单点突变 ±40%（可检），4 条每步 +10% 缓慢漂移（难检），专家标注「数据异常兜底」"],
+      ["失败（历史 bad case）","12","[仿真] 测站缺测/离线 v=None，专家标注「数据异常兜底」"]
+    ]},
+    {type:"p", text:"演进计划：[假设] 首版 60 条仿真集；上线后按「每周真实反馈 ≥20 条则替换 10 条仿真样例」扩充，3 个月内过渡到真实日志为主。"},
+    {type:"h", text:"2. 指标定义表（与设计文档、方案图一一对应）"},
+    {type:"table", head:["指标","层","口径（分子/分母/范围）","采集方式","坏例判定","目标值","实测值"], rows:[
+      ["预警分级准确率","效果","分级一致条数 / 60 条 [仿真]","run_eval.py 仿真跑分","错级或无预警误报","≥85% 达标 / ≥90% 优秀","基线 60.0% → 增强 93.3% [仿真]"],
+      ["数据异常兜底成功率","效果","正确兜底条数 / 24 条异常样例 [仿真]","run_eval.py 仿真跑分","缺测未兜底或正常误判异常","≥80% 达标 / ≥95% 优秀","基线 0% → 增强 83.3% [仿真]"],
+      ["孪生首屏加载时长","体验","加载耗时 / PC Chrome 范围 [真实]","前端性能埋点","超 10s 或不可交互","≤10s [真实]","原 PRD 需求值，未实测 [真实]"],
+      ["监测数据刷新周期","体验","采集到前端更新间隔 [真实]","IoT 接入日志","超 3s 或数据停滞","≤3s [真实]","原 PRD 需求值，未实测 [真实]"],
+      ["预警处置闭环率","业务","时限内闭环数 / 预警总数 [假设]","工作流日志","超 24h 未闭环或缺验收","≥95% [假设]","无线上数据，未测 [假设]"]
+    ]},
+    {type:"h", text:"3. 通过线（三档 + 置信度 + 合成规则）"},
+    {type:"table", head:["指标","阻断线","达标线","优秀线","实测结论"], rows:[
+      ["预警分级准确率","<70%","≥85%","≥90%","93.3% → 达优秀线 [仿真]，失分在 4 条缓慢漂移"],
+      ["数据异常兜底成功率","<60%","≥80%","≥95%","83.3% → 达标未优秀 [仿真]"],
+      ["孪生首屏加载时长",">15s","≤10s","≤6s","[真实] 原 PRD 需求 ≤10s，作品集 Demo 未做性能压测"],
+      ["预警处置闭环率","<80%","≥95%","≥99%","[假设] 无线上数据，上线后按此线验收"]
+    ]},
+    {type:"p", text:"定线依据：[估算] 分级准确率按防汛业务「错级代价高」取达标 85%、优秀 90%；异常兜底因涉及静默缺测风险，阻断线设为 60%；体验指标直接沿用 [真实] PRD 性能指标。全部阈值需在真实日志回流后复核。"},
+    {type:"callout", tone:"warn", text:"置信度说明：[仿真] N=60 的样本下，±5 个百分点的差异不显著（约 ±6.2% 的 95% 置信半径）；「93.3% 优于 90%」不能据此下强结论，只能说明达到展示门槛。4 条缓慢漂移漏检是确定性缺陷，不依赖统计显著性。真实验收需扩充至 ≥200 条真实日志。"},
+    {type:"kv", items:[
+      {k:"合成规则", v:"采用一票否决制：任一效果指标低于阻断线即不可上线；其余指标在达标线以上取加权总分（效果 50% / 体验 20% / 业务 30%），总分 ≥85 为通过。选用理由：防汛涉及工程安全，错级不可被其他指标的好看数值抵消。"}
+    ]},
+    {type:"h", text:"4. 回归方案"},
+    {type:"table", head:["变更类型","回归重点","是否触发"], rows:[
+      ["改分级规则 / Prompt","全量 60 条 + 历史 bad case 集","必触发"],
+      ["换模型 / 换检索策略","全量集 + 延迟与成本复测","必触发"],
+      ["更新预案知识库","知识相关 case + 时效性问题集","必触发"],
+      ["改处置工作流","主路径 + 人工确认节点 + 兜底回路","必触发"]
+    ]},
+    {type:"p", text:"回归集：[仿真] 固定黄金集 30 条（正常 12 / 边界 6 / 对抗 6 / 失败 6，版本化 v1.0）+ 随机抽样集 30 条（从 60 条集按种子重抽，防止过拟合黄金集）。频率：每次发版前 + 每周例行。不通过处理：阻塞发版 → 归因修复 → 重跑全量；若两轮不通过则回滚至上一版本规则。"},
+    {type:"h", text:"5. bad case 迭代闭环"},
+    {type:"table", head:["类型","表现","常见归因","修复手段","验证方式"], rows:[
+      ["漏召（静默缺测）","站点 v=None 却被标「缺失」而非兜底","规则层无数据质量门控","增加缺测门控，直接路由兜底工单","失败维度 12 条全通过 [仿真]"],
+      ["误召（传感器漂移）","漂移值被当成真实水位发预警","单点阈值比较无序列校验","增加历史序列突变检测（>25%）","对抗维度突变 8 条通过 [仿真]"],
+      ["事实错误 / 幻觉","RAG 给出无出处的处置建议","检索未命中却仍生成","无出处即拒答，输出三段式校验","知识 case 回归集"],
+      ["延迟超时","检索 >2s 拖慢整条链路","检索链路长","超时降级为纯规则分级 + 缓存","延迟埋点复测"]
+    ]},
+    {type:"p", text:"分级：[真实·PRD] 参照预警四级（蓝/黄/橙/红）与险情闭环；[假设] 对应 P0=红级误判或安全越界、P1=高频主路径错级、P2=中低频边缘场景、P3=体验偶发。"},
+    {type:"table", head:["#","case 描述","分类","级别","归因（+依据）","修复动作","复测结果","入库回归集"], rows:[
+      ["1","[仿真] 评测脚本 v1 中，边界水位 315.2m（陆浑水库警戒 315.0m）被突变检测判为「数据异常兜底」，而非「黄色预警」——正常临界值被误伤","误召","P1","[仿真] 归因：v1 用「单点与基线 0.6×警戒的偏差 >25%」判漂移，边界值必然超阈值。依据：v1 跑分边界维度仅 4/12 正确、正常维度从 24 降到 20","v2 改为「历史序列相邻点突变率 >25%」，平稳的边界序列不再误判","[仿真] 边界 12/12、正常 24/24，准确率 60.0%→93.3%","是 · 黄金集 v1.0"],
+      ["2","[仿真] 评测集对抗维度 4 条缓慢漂移（每步 +10%，累积 +40%）仍被判为正常水位，未触发兜底","漏召","P2","[仿真] 归因：单点突变检测只看相邻点，+10% 未越过 25% 阈值；依据：增强版对抗维度 8/12，漏检恰为 4 条缓慢漂移","已记录，待引入滑动窗口趋势检测（连续 3 点同向增长 ≥10%）后复测；当前以「阈值边缘人工复核」临时兜底","[仿真] 复测待做，当前缺陷保留展示","是 · 回归集标记 known issue"]
+    ]},
+    {type:"callout", tone:"tip", text:"闭环完整性：两条记录均回答了「问题是什么 → 怎么分类定级 → 归因依据 → 修复动作 → 复测结果 → 是否入库」六问。第 2 条刻意保留未完全修复的缺陷，用于说明评测不是一次性交付，而是持续迭代。"}
+  ]
+};
+
+/* ===== 渲染逻辑（无需修改） ===== */
+const evMap = {"[真实]":"ev-real","[仿真]":"ev-sim","[估算]":"ev-est","[假设]":"ev-hyp"};
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function fmt(text){
+  let s = esc(text);
+  s = s.replace(/\[(真实|仿真|估算|假设)\]/g, m => '<span class="ev '+evMap[m]+'">'+m+'</span>');
+  return s.replace(/\n/g,"<br>");
+}
+function renderBlocks(blocks){
+  return blocks.map(b => {
+    switch(b.type){
+      case "h": return '<div class="h3">'+fmt(b.text)+'</div>';
+      case "p": return '<p class="p">'+fmt(b.text)+'</p>';
+      case "table":
+        return '<div class="tbl-wrap"><table><thead><tr>'+b.head.map(h=>'<th>'+fmt(h)+'</th>').join("")+
+          '</tr></thead><tbody>'+b.rows.map(r=>'<tr>'+r.map(c=>'<td>'+fmt(c)+'</td>').join("")+'</tr>').join("")+
+          '</tbody></table></div>';
+      case "cards":
+        return '<div class="cards">'+b.items.map(it=>
+          '<div class="mini '+(b.color||"blue")+'">'+(it.tag?'<span class="tag">'+fmt(it.tag)+'</span>':"")+
+          '<div class="t">'+fmt(it.title)+'</div><div class="b">'+fmt(it.body)+'</div></div>').join("")+'</div>';
+      case "kv":
+        return '<div class="kv">'+b.items.map(it=>'<div class="k">'+fmt(it.k)+'</div><div class="v">'+fmt(it.v)+'</div>').join("")+'</div>';
+      case "callout":
+        return '<div class="callout '+(b.tone==="warn"?"warn":"")+'">'+fmt(b.text)+'</div>';
+      case "score":
+        return '<div class="score-strip">'+b.items.map(it=>
+          '<div class="score"><div class="q">'+fmt(it.q)+'</div><div class="v">'+fmt(it.score)+'</div>'+
+          '<div class="g">'+fmt(it.gap)+'</div></div>').join("")+'</div>';
+      case "details":
+        return '<details '+(b.open?"open":"")+'><summary>'+fmt(b.title)+'</summary><div class="dbody">'+
+          renderBlocks(b.blocks||[])+'</div></details>';
+      default: return "";
+    }
+  }).join("");
+}
+document.getElementById("kicker").textContent = CONFIG.kicker;
+document.getElementById("title").textContent = CONFIG.title;
+document.getElementById("subtitle").textContent = CONFIG.subtitle;
+document.getElementById("nav").innerHTML = CONFIG.nav.map(n=>'<a href="#'+n.id+'">'+esc(n.label)+'</a>').join("");
+document.getElementById("b1").innerHTML = renderBlocks(CONFIG.b1);
+document.getElementById("b2").innerHTML = renderBlocks(CONFIG.b2);
+document.getElementById("b3").innerHTML = renderBlocks(CONFIG.b3);
+document.getElementById("b5").innerHTML = renderBlocks(CONFIG.b5);
+
+/* 综合方案图渲染（内嵌，作用域限 .map） */
+(function(){
+  const m = CONFIG.map;
+  const zoneColor = p => ({purple:"zp",blue:"zb",teal:"zt",amber:"za"}[p]||"zb");
+  const nodeColor = p => ({purple:"np",blue:"nb",teal:"nt",amber:"na"}[p]||"nb");
+  const chipColor = p => ({purple:"cp",blue:"cb",teal:"ct",amber:"ca"}[p]||"cb");
+  const arrow = '<div class="m-arrow"></div>';
+  const el = document.getElementById("map");
+  el.innerHTML =
+    '<div class="m-legend">'+m.zones.map(z=>'<span><i class="'+zoneColor(z.color)+'"></i>'+esc(z.name)+'</span>').join("")+
+      '<span><i class="zr"></i>异常兜底</span><span><i class="zb"></i>指标埋点</span></div>'+
+    '<div class="m-panel"><div class="m-title">主流程（用户侧 → 业务流程 → AI 组件 → 人工确认）</div><div class="m-flow">'+
+      m.zones.map((z,i)=>(i?arrow:"")+'<div class="m-zone"><div class="m-zh '+zoneColor(z.color)+'">'+esc(z.name)+'</div>'+
+        '<div class="m-zb">'+z.nodes.map(n=>(n.chip?'<span class="m-chip '+chipColor(z.color)+'">'+esc(n.chip)+'</span><br>':"")+
+          '<div class="m-node '+nodeColor(z.color)+'">'+fmt(n.label)+'</div>').join("")+'</div></div>').join("")+
+      '</div></div>'+
+    '<div class="m-panel"><div class="m-title">异常兜底（最终回到结果输出）</div><div class="m-fb">'+
+      '<div class="m-fb-t">'+fmt(m.fallback.trigger)+'</div><div class="m-fb-flow">'+
+      m.fallback.nodes.map((n,i)=>(i?arrow:"")+'<div class="m-fb-node">'+esc(n)+'</div>').join("")+'</div>'+
+      '<div class="m-back">↩ 兜底后回到：'+esc(m.fallback.backTo)+'</div></div></div>'+
+    '<div class="m-panel"><div class="m-title">指标埋点（效果 / 体验 / 业务，与板块 2、5 一一对应）</div>'+
+      '<div class="m-metrics"><div class="m-grid">'+m.metrics.map(x=>{
+        const lc={effect:"le",exp:"lx",biz:"lb"}[x.layer]||"lb";
+        const ll={effect:"效果",exp:"体验",biz:"业务"}[x.layer]||"指标";
+        return '<div class="m-item"><span class="m-layer '+lc+'">'+ll+'</span><span class="m-n">'+esc(x.name)+'</span>'+
+          '<span class="m-p">'+esc(x.point)+'</span></div>';
+      }).join("")+'</div></div></div>';
+})();
+</script>
+</body>
+</html>
